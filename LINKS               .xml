@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<bpm_process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:gmi:bpm:process_definition" xsi:noNamespaceSchemaLocation="Schema.xsd">
+  <basic_info>
+    <version>0.2</version>
+    <summary>
+      Test links
+    </summary>
+    <history></history>
+  </basic_info>
+  <data_fields>
+    <data_field name="options_count" type="int" title="option_count" description="option_count" />
+    <data_field name="id" type="int" title="ID" description="ID" />
+  </data_fields>
+  <links>
+    <link name="Test_1" description="Link na google.com">
+      <connection_string_template><![CDATA[
+          provider=url;url=http://google.com;
+        ]]></connection_string_template>
+    </link>
+    <link name="Test_2" description="Link na korak u BPM-u">
+      <connection_string_template><![CDATA[
+          provider=url;url=http://localhost:2092/UI/StepView.aspx?id=${id};
+        ]]></connection_string_template>
+    </link>
+  </links>
+  <!--Region Start Step-->
+  <start_step name="start" title="start" description="Početak">
+    <!--<required_data_field>
+      
+    </required_data_field>-->
+    <post_evaluations>
+      <evaluation evaluator="js">
+        <statement><![CDATA[          
+          id = 28430;
+          ]]></statement>
+      </evaluation>
+    </post_evaluations>
+    <next_step>test</next_step>
+  </start_step>
+  <!--EndRegion Start Step-->
+  <end_step name="end" description="Kraj" />
+  <user_step name="test" title="Izbor dokumenta" description="Izbor dokumenta - test case id = 10936">
+    <user_or_group>Zaposleni</user_or_group>
+    <take_over_automatically>true</take_over_automatically>
+    <next_step>one</next_step>
+    <next_step_on_timeout>end</next_step_on_timeout>
+  </user_step>
+  <eval_step name="one" title="one" description="one">
+    <evaluate evaluator="js">
+      <statement><![CDATA[
+        options_count = 0;
+        ]]></statement>
+    </evaluate>
+    <next_step>end</next_step>
+  </eval_step>
+</bpm_process>
