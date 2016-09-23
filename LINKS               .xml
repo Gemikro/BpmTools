@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 <bpm_process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:gmi:bpm:process_definition" xsi:noNamespaceSchemaLocation="Schema.xsd">
   <basic_info>
-      <version>0.4</version>
+      <version>0.7</version>
     <summary>
       Test links
     </summary>
